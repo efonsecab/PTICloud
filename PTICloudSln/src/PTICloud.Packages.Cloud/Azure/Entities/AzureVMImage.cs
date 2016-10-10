@@ -8,5 +8,7 @@ namespace PTICloud.Packages.Cloud.Azure.Entities
 {
     public class AzureVMImage : IAzureVMImage
     {
+        public string Location { get; set; }
+        public string Name { get; set; }
     }
 }

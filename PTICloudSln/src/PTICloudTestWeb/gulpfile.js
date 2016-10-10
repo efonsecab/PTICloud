@@ -43,3 +43,36 @@ gulp.task("min:css", function () {
 });
 
 gulp.task("min", ["min:js", "min:css"]);
+
+gulp.task("clean:AppFolder", function (cb) {
+    rimraf(webroot + "app", cb);
+});
+
+gulp.task("clean:NodeModules", function (cb) {
+    rimraf(webroot + "node_modules", cb);
+});
+
+gulp.copyFolderToWebRoot = function (folderName) {
+    return gulp.src(folderName + "/**/*.js", { base: "." })
+    .pipe(gulp.dest(webroot));
+};
+
+gulp.task("copy:AppFolderJs", function () {
+    return gulp.src("app/**/*.js", { base: "." })
+    .pipe(gulp.dest(webroot, { overwrite: true }));
+});
+
+gulp.task("copy:AppFolderTemplates", function () {
+    return gulp.src("app/**/*.html", { base: "." })
+    .pipe(gulp.dest(webroot, { overwrite: true }));
+});
+
+gulp.copyFolderToWebRoot("node_modules", { overwrite: true });
+
+//gulp.copyFolderToWebRoot("node_modules/@angular");
+//gulp.copyFolderToWebRoot("node_modules/rx");
+//gulp.copyFolderToWebRoot("node_modules/rxjs");
+//gulp.copyFolderToWebRoot("node_modules/core-js");
+//gulp.copyFolderToWebRoot("node_modules/systemjs");
+//gulp.copyFolderToWebRoot("node_modules/reflect-metadata");
+//gulp.copyFolderToWebRoot("node_modules/rxjs");

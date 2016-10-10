@@ -54,7 +54,7 @@ namespace PTICloud.Packages.Cloud.Azure
             switch (location)
             {
                 case AzureLocation.SouthCentralUS:
-                    locationString = "South Central US";
+                    locationString = "southcentralus";
                     break;
             }
             if (string.IsNullOrWhiteSpace(locationString))

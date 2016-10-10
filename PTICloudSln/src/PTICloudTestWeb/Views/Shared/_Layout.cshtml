@@ -24,7 +24,16 @@
     <!-- 2. Configure SystemJS -->
     <script src="systemjs.config.js"></script>
     <script>
-      System.import('app').catch(function(err){ console.error(err); });
+        System.config({
+        packages: {
+          app: {
+            format: 'register',
+            defaultExtension: 'js'
+          }
+        }
+      });
+      System.import('app/main')
+            .then(null, console.error.bind(console));
     </script>
 </head>
 <body>
@@ -44,14 +53,18 @@
                     <li><a asp-controller="Home" asp-action="Index">Home</a></li>
                     <li><a asp-controller="Home" asp-action="About">About</a></li>
                     <li><a asp-controller="Home" asp-action="Contact">Contact</a></li>
+                    <li>
+                        <a asp-controller="AzureVirtualMachines" asp-action="Index">Azure Virtual Machines</a>
+                    </li>
+                    @await Html.PartialAsync("_LoginPartial")
                 </ul>
             </div>
         </div>
     </div>
     <div class="container body-content">
         @RenderBody()
-        TEST BELOW THIS
-        <my-app></my-app>
+        <my-app>
+        </my-app>
         <hr />
         <footer>
             <p>&copy; 2016 - PTICloudTestWeb</p>

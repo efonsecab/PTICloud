@@ -27,28 +27,47 @@ namespace PTICloud.Packages.Cloud.Azure
             await Task.Yield();
         }
 
-        public async Task GetAllVirtualMachinesImages(AzureLocation location)
+        public async Task<IList<VirtualMachineImageResource>> GetVirtualMachinesPublishers(AzureLocation location)
         {
             string locationString = base.GetStringFromAzureLocation(location);
             var lstPublishers = await this._computeManagementClient.VirtualMachineImages.ListPublishersAsync(locationString);
-            List<VirtualMachineImageResource> lstVirtualMachines = new List<VirtualMachineImageResource>();
-            foreach (var singlePublisher in lstPublishers)
+            return lstPublishers;
+        }
+
+        public async Task<List<VirtualMachineImageResource>> GetAllVirtualMachinesImages(AzureLocation location)
+        {
+            try
             {
-                var currentPublisherOffers = await this._computeManagementClient.VirtualMachineImages.ListOffersAsync(locationString,
-                    singlePublisher.Name);
-                foreach (var singleOffer in currentPublisherOffers)
+                string locationString = base.GetStringFromAzureLocation(location);
+                var lstPublishers = await this._computeManagementClient.VirtualMachineImages.ListPublishersAsync(locationString);
+                List<VirtualMachineImageResource> lstVirtualMachines = new List<VirtualMachineImageResource>();
+                foreach (var singlePublisher in lstPublishers)
                 {
-                    var offerSKUs = await this._computeManagementClient.VirtualMachineImages.ListSkusAsync(locationString, singlePublisher.Name, singleOffer.Name);
-                    foreach (var singleSKU in offerSKUs)
+                    var currentPublisherOffers = await this._computeManagementClient.VirtualMachineImages.ListOffersAsync(locationString,
+                        singlePublisher.Name);
+                    foreach (var singleOffer in currentPublisherOffers)
                     {
-                        var vmsForSKU = await this._computeManagementClient.VirtualMachineImages.ListAsync(locationString,
-                            singlePublisher.Name, singleOffer.Name, singleSKU.Name);
-                        if (vmsForSKU != null && vmsForSKU.Count > 0)
-                            lstVirtualMachines.AddRange(vmsForSKU);
+                        var offerSKUs = await this._computeManagementClient.VirtualMachineImages.ListSkusAsync(locationString, singlePublisher.Name, singleOffer.Name);
+                        foreach (var singleSKU in offerSKUs)
+                        {
+                            var vmsForSKU = await this._computeManagementClient.VirtualMachineImages.ListAsync(locationString,
+                                singlePublisher.Name, singleOffer.Name, singleSKU.Name);
+                            if (vmsForSKU != null && vmsForSKU.Count > 0)
+                                lstVirtualMachines.AddRange(vmsForSKU);
+                        }
                     }
                 }
+                await Task.Yield();
+                return lstVirtualMachines;
             }
-            await Task.Yield();
+            catch (AggregateException aggrEx)
+            {
+                throw aggrEx;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

@@ -1,9 +1,16 @@
 ﻿import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { AppComponent }   from './app.component';
+import 'rxjs';
+import { AppComponent } from './app.component';
+import { AzureVirtualMachineImageListComponent } from './azure/virtualmachines/azurevirtualmachineimagelist.component';
+
 @NgModule({
     imports: [BrowserModule],
-    declarations: [AppComponent],
+    declarations:
+    [
+        AppComponent,
+        AzureVirtualMachineImageListComponent
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

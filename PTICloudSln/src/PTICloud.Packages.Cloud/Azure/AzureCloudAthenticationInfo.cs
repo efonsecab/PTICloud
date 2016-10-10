@@ -12,7 +12,7 @@ namespace PTICloud.Packages.Cloud.Azure
         Certificate,
         PublishingProfile
     }
-    public abstract class AzureBaseCloudAthenticationInfo : IAzureCloudAuthenticationInfo
+    public class AzureCloudAthenticationInfo : IAzureCloudAuthenticationInfo
     {
         public CloudAuthenticationMode AuthenticationMode { get; set; } = CloudAuthenticationMode.AccessToken;
         public const string LOGIN_SERVER_URL = "https://login.windows.net/{0}";

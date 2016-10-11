@@ -1,7 +1,8 @@
-﻿{
+{
   "version": "1.0.0-*",
   "dependencies": {
-    "Microsoft.Azure.Management.Compute": "13.0.4-prerelease"
+    "Microsoft.Azure.Management.Compute": "13.0.4-prerelease",
+    "Microsoft.Azure.Management.Resources": "3.4.0-preview"
   },
   "frameworks": {
     "net461": { }

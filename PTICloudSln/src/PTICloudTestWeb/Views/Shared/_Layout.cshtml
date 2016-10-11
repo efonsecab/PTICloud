@@ -1,6 +1,7 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
+    <base href="/">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - PTICloudTestWeb</title>
@@ -23,10 +24,6 @@
     <script src="node_modules/systemjs/dist/system.src.js"></script>
     <!-- 2. Configure SystemJS -->
     <script src="systemjs.config.js"></script>
-    <script>
-        System.import('app/main')
-              .then(null, console.error.bind(console));
-    </script>
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -43,11 +40,11 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-controller="Home" asp-action="About">About</a></li>
+                    @*<li><a asp-controller="Home" asp-action="About">About</a></li>
                     <li><a asp-controller="Home" asp-action="Contact">Contact</a></li>
                     <li>
                         <a asp-controller="AzureVirtualMachines" asp-action="Index">Azure Virtual Machines</a>
-                    </li>
+                    </li>*@
                     @await Html.PartialAsync("_LoginPartial")
                 </ul>
             </div>
@@ -55,8 +52,6 @@
     </div>
     <div class="container body-content">
         @RenderBody()
-        <my-app>
-        </my-app>
         <hr />
         <footer>
             <p>&copy; 2016 - PTICloudTestWeb</p>

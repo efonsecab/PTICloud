@@ -17,13 +17,5 @@ namespace PTICloudTestWeb.Controllers.APIControllers
                 return this.HttpContext.Session;
             }
         }
-
-        protected string UserAccessToken
-        {
-            get
-            {
-                return Session.GetString(Constants.USER_ACCESSTOKEN);
-            }
-        }
     }
 }

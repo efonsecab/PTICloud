@@ -15,14 +15,14 @@
             </div>
         </div>
         <div class="table-responsive">
-            <table class="table" *ngIf='Publishers && Publishers.lenght'>
+            <table class="table" *ngIf="Publishers && Publishers.length">
                 <thead>
                     <tr>
                         <th>Name</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor='let singlePublisher of Publishers'>
+                    <tr *ngFor="let singlePublisher of Publishers">
                         <td>{{singlePublisher.Name}}</td>
                     </tr>
                 </tbody>

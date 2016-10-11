@@ -13,17 +13,29 @@ var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
 var forms_1 = require('@angular/forms');
 var http_1 = require('@angular/http');
+var router_1 = require('@angular/router');
 var app_component_1 = require('./app.component');
 var azurevirtualmachineimagelist_component_1 = require('./azure/virtualmachines/azurevirtualmachineimagelist.component');
+var azuresubscriptionlist_component_1 = require('./azure/subscriptions/azuresubscriptionlist.component');
 var AppModule = (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, http_1.HttpModule],
+            imports: [
+                platform_browser_1.BrowserModule,
+                forms_1.FormsModule,
+                http_1.HttpModule,
+                router_1.RouterModule.forRoot([
+                    { path: '', component: azurevirtualmachineimagelist_component_1.AzureVirtualMachineImageListComponent },
+                    { path: 'AzureVirtualMachines', component: azurevirtualmachineimagelist_component_1.AzureVirtualMachineImageListComponent },
+                    { path: 'Azure/SubscriptionsList', component: azuresubscriptionlist_component_1.AzureSubscriptionListComponent }
+                ])
+            ],
             declarations: [
                 app_component_1.AppComponent,
-                azurevirtualmachineimagelist_component_1.AzureVirtualMachineImageListComponent
+                azurevirtualmachineimagelist_component_1.AzureVirtualMachineImageListComponent,
+                azuresubscriptionlist_component_1.AzureSubscriptionListComponent
             ],
             bootstrap: [app_component_1.AppComponent]
         }), 

@@ -2,4 +2,4 @@
 import { AppModule } from './app.module';
 import { AzureVirtualMachineService } from './azure/virtualmachines/azurevirtualmachineservice';
 const platform = platformBrowserDynamic();
-platform.bootstrapModule(AppModule, [AzureVirtualMachineService]);
+platform.bootstrapModule(AppModule);

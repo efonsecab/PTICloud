@@ -15,6 +15,7 @@ using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using System.Security.Claims;
 using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 using PTICloudTestWeb.Helpers;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace PTICloudTestWeb
 {
@@ -27,6 +28,22 @@ namespace PTICloudTestWeb
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
                 .AddEnvironmentVariables();
+            if (env.IsDevelopment())
+            {
+                /*
+                 * For Development use User Secrets instead of modifying the appsettings.json files. This helps avoiding having 
+                 * development sensitive configuration in the source control. To create your local secrets see
+                 * https://docs.asp.net/en/latest/security/app-secrets.html
+                 * For Production the changes must be reflected into the appsettings.json file
+                 * File Location
+                 * 
+                 * •Windows: %APPDATA%\microsoft\UserSecrets\<userSecretsId>\secrets.json
+                 * •Linux: ~/.microsoft/usersecrets/<userSecretsId>/secrets.json
+                 * •Mac: ~/.microsoft/usersecrets/<userSecretsId>/secrets.json
+                 * */
+                builder.AddUserSecrets();
+                //builder.AddUserSecrets("PTICloudTestWeb-79c563d8-751d-48e5-a5b1-d0ec19e5d2b0");
+            }
             Configuration = builder.Build();
         }
 
@@ -37,6 +54,8 @@ namespace PTICloudTestWeb
         {
             // Add framework services.
             services.AddMvc();
+            //http://stackoverflow.com/questions/37371264/invalidoperationexception-unable-to-resolve-service-for-type-microsoft-aspnetc
+            services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddSession();
         }
 
@@ -55,7 +74,6 @@ namespace PTICloudTestWeb
             {
                 app.UseExceptionHandler("/Home/Error");
             }
-
             app.UseStaticFiles();
             app.UseSession();
             app.UseCookieAuthentication(options: new CookieAuthenticationOptions()
@@ -66,6 +84,7 @@ namespace PTICloudTestWeb
             string clientId = Configuration["Authentication:AzureAd:ClientId"];
             string clientSecret = Configuration["Authentication:AzureAd:ClientSecret"];
             string authority = Configuration["Authentication:AzureAd:AADInstance"] + Configuration["Authentication:AzureAd:TenantId"];
+            PTICloudTestWeb.Helpers.SessionHelper.HttpContextAccessor = app.ApplicationServices.GetRequiredService<IHttpContextAccessor>();
             app.UseOpenIdConnectAuthentication(options: new OpenIdConnectOptions()
             {
                 AutomaticChallenge = true,

@@ -8,28 +8,26 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-require('rxjs');
+require('rxjs/Rx');
+var http_1 = require('@angular/http');
+var forms_1 = require('@angular/forms');
 var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
-var forms_1 = require('@angular/forms');
-var http_1 = require('@angular/http');
-var app_component_1 = require('./app.component');
-var azurevirtualmachineimagelist_component_1 = require('./azure/virtualmachines/azurevirtualmachineimagelist.component');
-var AppModule = (function () {
-    function AppModule() {
+var azurevirtualmachineimagelist_component_1 = require('./azurevirtualmachineimagelist.component');
+var AzureVirtualMachineModule = (function () {
+    function AzureVirtualMachineModule() {
     }
-    AppModule = __decorate([
+    AzureVirtualMachineModule = __decorate([
         core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, http_1.HttpModule],
+            imports: [platform_browser_1.BrowserModule, http_1.HttpModule, forms_1.FormsModule],
             declarations: [
-                app_component_1.AppComponent,
                 azurevirtualmachineimagelist_component_1.AzureVirtualMachineImageListComponent
             ],
-            bootstrap: [app_component_1.AppComponent]
+            bootstrap: [azurevirtualmachineimagelist_component_1.AzureVirtualMachineImageListComponent]
         }), 
         __metadata('design:paramtypes', [])
-    ], AppModule);
-    return AppModule;
+    ], AzureVirtualMachineModule);
+    return AzureVirtualMachineModule;
 }());
-exports.AppModule = AppModule;
-//# sourceMappingURL=app.module.js.map
+exports.AzureVirtualMachineModule = AzureVirtualMachineModule;
+//# sourceMappingURL=AzureVirtualMachine.module.js.map

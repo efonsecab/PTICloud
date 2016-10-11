@@ -1,4 +1,4 @@
-﻿/// <binding Clean='clean' />
+﻿/// <binding AfterBuild='copy:AppFolder' Clean='clean' />
 "use strict";
 
 var gulp = require("gulp"),
@@ -66,6 +66,8 @@ gulp.task("copy:AppFolderTemplates", function () {
     return gulp.src("app/**/*.html", { base: "." })
     .pipe(gulp.dest(webroot, { overwrite: true }));
 });
+
+gulp.task("copy:AppFolder", ["copy:AppFolderJs", "copy:AppFolderTemplates"]);
 
 gulp.copyFolderToWebRoot("node_modules", { overwrite: true });
 

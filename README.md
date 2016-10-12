@@ -61,3 +61,9 @@ To know how to use and configure user screts check
 The application Startup.cs file is configured to look for User Secrets when in Development mode. Check the Startup class constructor at Startup.cs.
 
 Once you have configure your Azure AD app and user secrets, you are ready to start with development.
+
+## Knowledge Base
+This is the list of common errors found in the application and how to solve them
+
+* **"error":"invalid_grant","error_description":"AADSTS65001: The user or administrator has not consented to use the application with ID...**
+  * This error happens when trying to get the mangement access token. Usually happens when you are not the tenant administrator or co-administrator.

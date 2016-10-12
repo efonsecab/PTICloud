@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 export class AzureVirtualMachineService {
     private _getVMImagesListUrl = "api/azurevms/vmsList";
     private _getVMImagePublishersUrl = "api/azurevmImages/publishers";
+    private _getPublisherOffersUrl = 'api/azurevmImages/offers';
 
     constructor(private _http: Http) { }
 
@@ -19,6 +20,13 @@ export class AzureVirtualMachineService {
 
     getVirtualMachineImages(subscriptionId: string): Observable<IAzureVirtualMachineImage[]> {
         return this._http.get(this._getVMImagesListUrl + "?subscriptionId=" + subscriptionId)
+            .map((response: Response) => <IAzureVirtualMachineImage[]>response.json())
+            .do(data => console.log("All: " + JSON.stringify(data)))
+            .catch(this.handleError);
+    }
+
+    getOffers(publisherName: string, subscriptionId: string): Observable<IAzureVirtualMachineImage[]> {
+        return this._http.get(this._getPublisherOffersUrl + "?publisherName=" + publisherName + "&subscriptionId=" + subscriptionId)
             .map((response: Response) => <IAzureVirtualMachineImage[]>response.json())
             .do(data => console.log("All: " + JSON.stringify(data)))
             .catch(this.handleError);

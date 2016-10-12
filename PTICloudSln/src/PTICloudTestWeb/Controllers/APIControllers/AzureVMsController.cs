@@ -27,6 +27,29 @@ namespace PTICloudTestWeb.Controllers.APIControllers
             return Ok(allvmImages);
         }
 
+        private void VerifyOrGetManagementToken(ref string currentToken)
+        {
+            if (string.IsNullOrWhiteSpace(currentToken))
+                currentToken = PTICloudTestWeb.Helpers.SessionHelper.AzureManagementAccessToken;
+        }
+
+        [HttpGet]
+        [Route("api/azurevmImages/offers")]
+        public async Task<IActionResult> GetPublisherOffers(string publisherName, string subscriptionId, string managementToken)
+        {
+            VerifyOrGetManagementToken(ref managementToken);
+            PTICloud.Packages.Cloud.Azure.AzureCloudAthenticationInfo authInfo =
+                new PTICloud.Packages.Cloud.Azure.AzureCloudAthenticationInfo()
+                {
+                    AuthenticationMode = PTICloud.Packages.Cloud.Azure.CloudAuthenticationMode.AccessToken,
+                    AzureAccessToken = managementToken,
+                    SubscriptionId = subscriptionId
+                };
+            PTICloud.Packages.Cloud.Azure.AzureVirtualMachinesManager avm = new PTICloud.Packages.Cloud.Azure.AzureVirtualMachinesManager(authInfo);
+            var result = await avm.GetVirtualMachinesOffersForPublisher(PTICloud.Packages.Cloud.Azure.AzureBaseManager.AzureLocation.SouthCentralUS, publisherName);
+            return Ok(result);
+        }
+
         [HttpGet]
         [Route("api/azurevmImages/publishers")]
         public async Task<IActionResult> GetVMImagesPublishers(string subscriptionId, string managementToken)

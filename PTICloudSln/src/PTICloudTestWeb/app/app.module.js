@@ -18,6 +18,7 @@ var app_component_1 = require('./app.component');
 var azurevirtualmachineimagelist_component_1 = require('./azure/virtualmachines/azurevirtualmachineimagelist.component');
 var azuresubscriptionlist_component_1 = require('./azure/subscriptions/azuresubscriptionlist.component');
 var azuresubscriptioninfo_component_1 = require('./azure/subscriptions/azuresubscriptioninfo.component');
+var azurevirtualmachinepublisheroffers_component_1 = require('./azure/virtualmachines/azurevirtualmachinepublisheroffers.component');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -31,14 +32,16 @@ var AppModule = (function () {
                     { path: '', component: azuresubscriptionlist_component_1.AzureSubscriptionListComponent },
                     { path: 'Azure/VirtualMachines', component: azurevirtualmachineimagelist_component_1.AzureVirtualMachineImageListComponent },
                     { path: 'Azure/SubscriptionsList', component: azuresubscriptionlist_component_1.AzureSubscriptionListComponent },
-                    { path: 'Azure/SubscriptionInfo', component: azuresubscriptioninfo_component_1.AzureSubscriptionInfoComponent }
+                    { path: 'Azure/SubscriptionInfo', component: azuresubscriptioninfo_component_1.AzureSubscriptionInfoComponent },
+                    { path: 'Azure/VirtualMachines/Offers', component: azurevirtualmachinepublisheroffers_component_1.AzureVirtualMachinePublisherOffersComponent }
                 ])
             ],
             declarations: [
                 app_component_1.AppComponent,
                 azurevirtualmachineimagelist_component_1.AzureVirtualMachineImageListComponent,
                 azuresubscriptionlist_component_1.AzureSubscriptionListComponent,
-                azuresubscriptioninfo_component_1.AzureSubscriptionInfoComponent
+                azuresubscriptioninfo_component_1.AzureSubscriptionInfoComponent,
+                azurevirtualmachinepublisheroffers_component_1.AzureVirtualMachinePublisherOffersComponent
             ],
             bootstrap: [app_component_1.AppComponent]
         }), 

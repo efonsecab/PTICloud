@@ -23,7 +23,11 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let singlePublisher of Publishers">
-                        <td>{{singlePublisher.name}}</td>
+                        <td>
+                            <a [routerLink]="['/Azure/VirtualMachines/Offers']" [queryParams]="{publisherName: [singlePublisher.name], subscriptionId: [SelectedSubscriptionId]}">
+                                {{singlePublisher.name}}
+                            </a>
+                        </td>
                     </tr>
                 </tbody>
             </table>

@@ -1,4 +1,4 @@
-﻿/// <binding AfterBuild='copy:AppFolder' Clean='clean' />
+/// <binding AfterBuild='copy:AppFolder' Clean='clean' />
 "use strict";
 
 var gulp = require("gulp"),

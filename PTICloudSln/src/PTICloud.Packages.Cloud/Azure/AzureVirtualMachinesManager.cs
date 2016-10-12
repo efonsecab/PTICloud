@@ -34,6 +34,24 @@ namespace PTICloud.Packages.Cloud.Azure
             return lstPublishers;
         }
 
+        public async Task<IList<VirtualMachineImageResource>> GetVirtualMachinesOffersForPublisher(AzureLocation location, string publisherName)
+        {
+            try
+            {
+                string locationString = base.GetStringFromAzureLocation(location);
+                var lstOffers = await this._computeManagementClient.VirtualMachineImages.ListOffersAsync(locationString, publisherName);
+                return lstOffers;
+            }
+            catch (AggregateException aggrEx)
+            {
+                throw aggrEx;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public async Task<List<VirtualMachineImageResource>> GetAllVirtualMachinesImages(AzureLocation location)
         {
             try

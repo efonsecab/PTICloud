@@ -16,6 +16,7 @@ var AzureVirtualMachineService = (function () {
         this._http = _http;
         this._getVMImagesListUrl = "api/azurevms/vmsList";
         this._getVMImagePublishersUrl = "api/azurevmImages/publishers";
+        this._getPublisherOffersUrl = 'api/azurevmImages/offers';
     }
     AzureVirtualMachineService.prototype.getPublishers = function (subscriptionId) {
         return this._http.get(this._getVMImagePublishersUrl + "?subscriptionId=" + subscriptionId)
@@ -25,6 +26,12 @@ var AzureVirtualMachineService = (function () {
     };
     AzureVirtualMachineService.prototype.getVirtualMachineImages = function (subscriptionId) {
         return this._http.get(this._getVMImagesListUrl + "?subscriptionId=" + subscriptionId)
+            .map(function (response) { return response.json(); })
+            .do(function (data) { return console.log("All: " + JSON.stringify(data)); })
+            .catch(this.handleError);
+    };
+    AzureVirtualMachineService.prototype.getOffers = function (publisherName, subscriptionId) {
+        return this._http.get(this._getPublisherOffersUrl + "?publisherName=" + publisherName + "&subscriptionId=" + subscriptionId)
             .map(function (response) { return response.json(); })
             .do(function (data) { return console.log("All: " + JSON.stringify(data)); })
             .catch(this.handleError);

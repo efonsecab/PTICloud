@@ -22,4 +22,7 @@ export class AzureSubscriptionListComponent implements OnInit {
             subscriptions => this.SubscriptionsList = subscriptions,
             error => console.log("Error getting Subscriptions: " + error));
     }
+
+    selectSubscription(): void {
+    }
 }

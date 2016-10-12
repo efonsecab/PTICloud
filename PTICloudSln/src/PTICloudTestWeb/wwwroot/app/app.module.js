@@ -17,6 +17,7 @@ var router_1 = require('@angular/router');
 var app_component_1 = require('./app.component');
 var azurevirtualmachineimagelist_component_1 = require('./azure/virtualmachines/azurevirtualmachineimagelist.component');
 var azuresubscriptionlist_component_1 = require('./azure/subscriptions/azuresubscriptionlist.component');
+var azuresubscriptioninfo_component_1 = require('./azure/subscriptions/azuresubscriptioninfo.component');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -27,15 +28,17 @@ var AppModule = (function () {
                 forms_1.FormsModule,
                 http_1.HttpModule,
                 router_1.RouterModule.forRoot([
-                    { path: '', component: azurevirtualmachineimagelist_component_1.AzureVirtualMachineImageListComponent },
-                    { path: 'AzureVirtualMachines', component: azurevirtualmachineimagelist_component_1.AzureVirtualMachineImageListComponent },
-                    { path: 'Azure/SubscriptionsList', component: azuresubscriptionlist_component_1.AzureSubscriptionListComponent }
+                    { path: '', component: azuresubscriptionlist_component_1.AzureSubscriptionListComponent },
+                    { path: 'Azure/VirtualMachines', component: azurevirtualmachineimagelist_component_1.AzureVirtualMachineImageListComponent },
+                    { path: 'Azure/SubscriptionsList', component: azuresubscriptionlist_component_1.AzureSubscriptionListComponent },
+                    { path: 'Azure/SubscriptionInfo', component: azuresubscriptioninfo_component_1.AzureSubscriptionInfoComponent }
                 ])
             ],
             declarations: [
                 app_component_1.AppComponent,
                 azurevirtualmachineimagelist_component_1.AzureVirtualMachineImageListComponent,
-                azuresubscriptionlist_component_1.AzureSubscriptionListComponent
+                azuresubscriptionlist_component_1.AzureSubscriptionListComponent,
+                azuresubscriptioninfo_component_1.AzureSubscriptionInfoComponent
             ],
             bootstrap: [app_component_1.AppComponent]
         }), 

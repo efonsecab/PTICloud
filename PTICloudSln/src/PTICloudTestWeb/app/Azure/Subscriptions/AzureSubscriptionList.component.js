@@ -20,6 +20,8 @@ var AzureSubscriptionListComponent = (function () {
         console.log("reached AzureSubscriptionListComponent  ngOnInit");
         this._azureSubscriptionsService.getSubscriptions().subscribe(function (subscriptions) { return _this.SubscriptionsList = subscriptions; }, function (error) { return console.log("Error getting Subscriptions: " + error); });
     };
+    AzureSubscriptionListComponent.prototype.selectSubscription = function () {
+    };
     AzureSubscriptionListComponent = __decorate([
         core_1.Component({
             selector: 'azureSubscriptionsList',

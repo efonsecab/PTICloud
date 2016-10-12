@@ -29,13 +29,17 @@ namespace PTICloudTestWeb.Controllers.APIControllers
 
         [HttpGet]
         [Route("api/azurevmImages/publishers")]
-        public async Task<IActionResult> GetVMImagesPublishers(string subscriptionId, string token)
+        public async Task<IActionResult> GetVMImagesPublishers(string subscriptionId, string managementToken)
         {
+            if (string.IsNullOrWhiteSpace(managementToken) && ControllerContext.HttpContext != null && ControllerContext.HttpContext.Session != null)
+            {
+                managementToken = PTICloudTestWeb.Helpers.SessionHelper.AzureManagementAccessToken;
+            }
             PTICloud.Packages.Cloud.Azure.AzureCloudAthenticationInfo authInfo =
                 new PTICloud.Packages.Cloud.Azure.AzureCloudAthenticationInfo()
                 {
                     AuthenticationMode = PTICloud.Packages.Cloud.Azure.CloudAuthenticationMode.AccessToken,
-                    AzureAccessToken = token,
+                    AzureAccessToken = managementToken,
                     SubscriptionId = subscriptionId
 
                 };

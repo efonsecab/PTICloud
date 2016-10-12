@@ -18,6 +18,7 @@
             <table class="table" *ngIf="SubscriptionsList && SubscriptionsList.length">
                 <thead>
                     <tr>
+                        <th>Command Icons</th>
                         <th>Id</th>
                         <th>Subscription Id</th>
                         <th>Display Name</th>
@@ -26,7 +27,14 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let singleSubscription of SubscriptionsList">
-                        <td>{{singleSubscription.id}}</td>
+                        <td>
+                            <a [routerLink]="['/Azure/SubscriptionInfo']" [queryParams]="{subscriptionId: [singleSubscription.subscriptionId]}">
+                                Azure Subscriptions List {{singleSubscription.subscriptionId}}
+                            </a>
+                        </td>
+                        <td>
+                            {{singleSubscription.id}}
+                        </td>
                         <td>{{singleSubscription.subscriptionId}}</td>
                         <td>{{singleSubscription.displayName}}</td>
                         <td>{{singleSubscription.state}}</td>

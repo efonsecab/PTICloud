@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { AzureVirtualMachineImageListComponent } from './azure/virtualmachines/azurevirtualmachineimagelist.component';
 import { AzureVirtualMachineService } from './azure/virtualmachines/azurevirtualmachineservice';
 import { AzureSubscriptionListComponent } from './azure/subscriptions/azuresubscriptionlist.component';
+import { AzureSubscriptionInfoComponent } from './azure/subscriptions/azuresubscriptioninfo.component';
 
 @NgModule({
     imports: [
@@ -16,9 +17,10 @@ import { AzureSubscriptionListComponent } from './azure/subscriptions/azuresubsc
         HttpModule,
         RouterModule.forRoot(
             [
-                { path: '', component: AzureVirtualMachineImageListComponent },
-                { path: 'AzureVirtualMachines', component: AzureVirtualMachineImageListComponent },
-                { path: 'Azure/SubscriptionsList', component: AzureSubscriptionListComponent }
+                { path: '', component: AzureSubscriptionListComponent },
+                { path: 'Azure/VirtualMachines', component: AzureVirtualMachineImageListComponent },
+                { path: 'Azure/SubscriptionsList', component: AzureSubscriptionListComponent },
+                { path: 'Azure/SubscriptionInfo', component: AzureSubscriptionInfoComponent }
             ])
 
     ],
@@ -26,7 +28,8 @@ import { AzureSubscriptionListComponent } from './azure/subscriptions/azuresubsc
     [
         AppComponent,
         AzureVirtualMachineImageListComponent,
-        AzureSubscriptionListComponent
+        AzureSubscriptionListComponent,
+        AzureSubscriptionInfoComponent
     ],
     bootstrap: [AppComponent]
 })

@@ -1,0 +1,4 @@
+<h3>Subscription: {{SelectedSubscriptionId}}</h3>
+<a [routerLink]="['/Azure/VirtualMachines']" [queryParams]="{subscriptionId: [SelectedSubscriptionId]}">
+    Virtual Machines {{SelectedSubscriptionId}}
+</a>

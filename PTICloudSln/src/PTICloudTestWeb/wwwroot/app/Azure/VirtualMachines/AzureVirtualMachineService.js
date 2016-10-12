@@ -15,10 +15,10 @@ var AzureVirtualMachineService = (function () {
     function AzureVirtualMachineService(_http) {
         this._http = _http;
         this._getVMImagesListUrl = "api/azurevms/vmsList";
-        this._getVMImagePublishers = "api/azurevmImages/publishers";
+        this._getVMImagePublishersUrl = "api/azurevmImages/publishers";
     }
-    AzureVirtualMachineService.prototype.getPublishers = function (subscriptionId, token) {
-        return this._http.get(this.getPublishers + "?subscriptionID=" + subscriptionId + "&token=" + token)
+    AzureVirtualMachineService.prototype.getPublishers = function (subscriptionId) {
+        return this._http.get(this._getVMImagePublishersUrl + "?subscriptionId=" + subscriptionId)
             .map(function (response) { return response.json(); })
             .do(function (data) { return console.log("All: " + JSON.stringify(data)); })
             .catch(this.handleError);

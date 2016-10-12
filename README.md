@@ -67,3 +67,7 @@ This is the list of common errors found in the application and how to solve them
 
 * **"error":"invalid_grant","error_description":"AADSTS65001: The user or administrator has not consented to use the application with ID...**
   * This error happens when trying to get the mangement access token. Usually happens when you are not the tenant administrator or co-administrator.
+
+## How To Use
+Check a sample of how to use the app on it's current development state (October 12, 2016)
+[PTI Cloud How to Use Development Sample](https://youtu.be/yu5Tbdk8u_0)

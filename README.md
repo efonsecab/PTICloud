@@ -1,4 +1,4 @@
-# PTICloud
+# PTI Cloud
 
 PTI Cloud is an Open Source project with the purpose of allowing anyone to easily consume Azure SDKs from any kind of application,
 while at the same time offering a .NET Core based website where users would be able to handle Azure Tenants.
@@ -60,4 +60,4 @@ To know how to use and configure user screts check
 
 The application Startup.cs file is configured to look for User Secrets when in Development mode. Check the Startup class constructor at Startup.cs.
 
-Once you have configure your Azure AD app and user secrets, you are ready con start development.
+Once you have configure your Azure AD app and user secrets, you are ready to start with development.

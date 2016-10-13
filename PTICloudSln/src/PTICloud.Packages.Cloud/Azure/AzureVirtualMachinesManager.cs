@@ -1,5 +1,6 @@
 ﻿using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.Rest.Azure;
 using PTICloud.Packages.Cloud.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -19,7 +20,7 @@ namespace PTICloud.Packages.Cloud.Azure
             this._computeManagementClient.SubscriptionId = base.AuthInfo.SubscriptionId;
         }
 
-        public async Task<IList<VirtualMachineImageResource>> GetVirtualMachineImages(AzureLocation location, 
+        public async Task<IList<VirtualMachineImageResource>> GetVirtualMachineImages(AzureLocation location,
             string publisherName, string offerName, string skus)
         {
             string locationString = base.GetStringFromAzureLocation(location);
@@ -27,7 +28,13 @@ namespace PTICloud.Packages.Cloud.Azure
             return result;
         }
 
-        public async Task<IList<VirtualMachineImageResource>> GetVirtualMachineSkus(AzureLocation location,string publisherName, string offerName)
+        public async Task<IPage<VirtualMachine>> GetVirtualMachines()
+        {
+            var result = await this._computeManagementClient.VirtualMachines.ListAllAsync();
+            return result;
+        }
+
+        public async Task<IList<VirtualMachineImageResource>> GetVirtualMachineSkus(AzureLocation location, string publisherName, string offerName)
         {
             string locationString = base.GetStringFromAzureLocation(location);
             var result = await this._computeManagementClient.VirtualMachineImages.ListSkusAsync(locationString, publisherName, offerName);

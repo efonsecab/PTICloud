@@ -1,4 +1,4 @@
-﻿import { IAzureVirtualMachineImage } from './IAzureVirtualMachineImage';
+﻿import { IAzureVirtualMachineImageResource } from './IAzureVirtualMachineImageResource';
 import { Component, OnInit } from '@angular/core';
 import { AzureVirtualMachineService } from './AzureVirtualMachineService';
 import { Observable } from 'rxjs';
@@ -12,7 +12,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class AzureVirtualMachinePublisherOffersComponent implements OnInit {
     listFilter: string;
-    Offers: IAzureVirtualMachineImage[];
+    Offers: IAzureVirtualMachineImageResource[];
     SelectedSubscriptionId: string;
     SelectedPublisherName: string;
 

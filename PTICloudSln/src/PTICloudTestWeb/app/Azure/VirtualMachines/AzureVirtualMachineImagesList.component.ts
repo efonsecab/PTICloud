@@ -1,4 +1,4 @@
-﻿import { IAzureVirtualMachineImage } from './IAzureVirtualMachineImage'
+﻿import { IAzureVirtualMachineImageResource } from './IAzureVirtualMachineImageResource'
 import { Component, OnInit } from '@angular/core';
 import { AzureVirtualMachineService } from './AzureVirtualMachineService';
 import { Observable } from 'rxjs';
@@ -16,7 +16,7 @@ export class AzureVirtualMachineImagesListComponent implements OnInit
     SelectedPublisherName: string;
     SelectedOfferName: string;
     SelectedSkuName: string;
-    VMImages: IAzureVirtualMachineImage[];
+    VMImages: IAzureVirtualMachineImageResource[];
     listFilter: string;
 
     constructor(private _azureVMsService: AzureVirtualMachineService, private router: Router, private route: ActivatedRoute) {

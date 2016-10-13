@@ -21,6 +21,7 @@ var azuresubscriptioninfo_component_1 = require('./azure/subscriptions/azuresubs
 var azurevirtualmachinepublisheroffers_component_1 = require('./azure/virtualmachines/azurevirtualmachinepublisheroffers.component');
 var AzureVirtualMachinePublisherOfferSkus_component_1 = require('./azure/virtualmachines/AzureVirtualMachinePublisherOfferSkus.component');
 var azurevirtualmachineimageslist_component_1 = require('./azure/virtualmachines/azurevirtualmachineimageslist.component');
+var azurevirtualmachinelist_component_1 = require('./azure/virtualmachines/azurevirtualmachinelist.component');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -37,7 +38,8 @@ var AppModule = (function () {
                     { path: 'Azure/SubscriptionInfo', component: azuresubscriptioninfo_component_1.AzureSubscriptionInfoComponent },
                     { path: 'Azure/VirtualMachines/Offers', component: azurevirtualmachinepublisheroffers_component_1.AzureVirtualMachinePublisherOffersComponent },
                     { path: 'Azure/VirtualMachines/Skus', component: AzureVirtualMachinePublisherOfferSkus_component_1.AzureVirtualMachinePublisherOfferSkusComponent },
-                    { path: 'Azure/VirtualMachines/ImageList', component: azurevirtualmachineimageslist_component_1.AzureVirtualMachineImagesListComponent }
+                    { path: 'Azure/VirtualMachines/ImageList', component: azurevirtualmachineimageslist_component_1.AzureVirtualMachineImagesListComponent },
+                    { path: 'Azure/VirtualMachines/List', component: azurevirtualmachinelist_component_1.AzureVirtualMachineListComponent }
                 ])
             ],
             declarations: [
@@ -47,7 +49,8 @@ var AppModule = (function () {
                 azuresubscriptioninfo_component_1.AzureSubscriptionInfoComponent,
                 azurevirtualmachinepublisheroffers_component_1.AzureVirtualMachinePublisherOffersComponent,
                 AzureVirtualMachinePublisherOfferSkus_component_1.AzureVirtualMachinePublisherOfferSkusComponent,
-                azurevirtualmachineimageslist_component_1.AzureVirtualMachineImagesListComponent
+                azurevirtualmachineimageslist_component_1.AzureVirtualMachineImagesListComponent,
+                azurevirtualmachinelist_component_1.AzureVirtualMachineListComponent
             ],
             bootstrap: [app_component_1.AppComponent]
         }), 

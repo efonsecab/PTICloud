@@ -1,4 +1,13 @@
 ﻿<h3>Subscription: {{SelectedSubscriptionId}}</h3>
-<a [routerLink]="['/Azure/VirtualMachines/Publishers']" [queryParams]="{subscriptionId: [SelectedSubscriptionId]}">
-    Virtual Machines {{SelectedSubscriptionId}}
-</a>
+<ul>
+    <li>
+        <a [routerLink]="['/Azure/VirtualMachines/Publishers']" [queryParams]="{subscriptionId: [SelectedSubscriptionId]}">
+            Publishers
+        </a>
+    </li>
+    <li>
+        <a [routerLink]="['/Azure/VirtualMachines/List']" [queryParams]="{subscriptionId: [SelectedSubscriptionId]}">
+            Virtual Machines
+        </a>
+    </li>
+</ul>

@@ -10,6 +10,7 @@ namespace PTICloudTestWeb.Controllers.APIControllers
 {
     public class AzureVMsController : BaseApiController
     {
+        #region VM Images Logic
         [HttpGet]
         [Route("api/azurevmImages/allimages")]
         public async Task<IActionResult> GetAllVMImages(string subscriptionId, string token)
@@ -104,5 +105,24 @@ namespace PTICloudTestWeb.Controllers.APIControllers
             var publishers = await vmManager.GetVirtualMachinesPublishers(PTICloud.Packages.Cloud.Azure.AzureBaseManager.AzureLocation.SouthCentralUS);
             return Ok(publishers);
         }
+        #endregion VM Images Logic
+
+        #region VM Logic
+        [HttpGet]
+        [Route("api/azurevms/List")]
+        public async Task<IActionResult> GetVirtualMachines(string subscriptionId, string managementToken)
+        {
+            this.VerifyOrGetManagementToken(ref managementToken);
+            PTICloud.Packages.Cloud.Azure.AzureCloudAthenticationInfo authInfo = new PTICloud.Packages.Cloud.Azure.AzureCloudAthenticationInfo()
+            {
+                AuthenticationMode = PTICloud.Packages.Cloud.Azure.CloudAuthenticationMode.AccessToken,
+                AzureAccessToken = managementToken,
+                SubscriptionId = subscriptionId
+            };
+            PTICloud.Packages.Cloud.Azure.AzureVirtualMachinesManager avm = new PTICloud.Packages.Cloud.Azure.AzureVirtualMachinesManager(authInfo);
+            var result = await avm.GetVirtualMachines();
+            return Ok(result);
+        }
+        #endregion VM Logic
     }
 }

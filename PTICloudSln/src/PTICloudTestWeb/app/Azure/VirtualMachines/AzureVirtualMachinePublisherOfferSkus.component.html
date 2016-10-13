@@ -1,6 +1,6 @@
-<div class="panel panel-primary">
+﻿<div class="panel panel-primary">
     <div class="panel-heading">
-        Offers
+        Skus
     </div>
     <div class="panel-body">
         <div class="row">
@@ -15,19 +15,15 @@
             </div>
         </div>
         <div class="table-responsive">
-            <table class="table" *ngIf="Offers && Offers.length">
+            <table class="table" *ngIf="Skus && Skus.length">
                 <thead>
                     <tr>
                         <th>Name</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let singleOffer of Offers">
-                        <td>
-                            <a [routerLink]="['/Azure/VirtualMachines/Skus']" [queryParams]="{subscriptionId: [SelectedSubscriptionId], publisherName: [SelectedPublisherName], offerName: [singleOffer.name]}">
-                                {{singleOffer.name}}
-                            </a>
-                        </td>
+                    <tr *ngFor="let singleSku of Skus">
+                        <td>{{singleSku.name}}</td>
                     </tr>
                 </tbody>
             </table>

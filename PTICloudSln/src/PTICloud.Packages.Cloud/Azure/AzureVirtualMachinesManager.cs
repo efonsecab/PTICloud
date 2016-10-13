@@ -27,6 +27,13 @@ namespace PTICloud.Packages.Cloud.Azure
             await Task.Yield();
         }
 
+        public async Task<IList<VirtualMachineImageResource>> GetVirtualMachineSkus(AzureLocation location,string publisherName, string offerName)
+        {
+            string locationString = base.GetStringFromAzureLocation(location);
+            var result = await this._computeManagementClient.VirtualMachineImages.ListSkusAsync(locationString, publisherName, offerName);
+            return result;
+        }
+
         public async Task<IList<VirtualMachineImageResource>> GetVirtualMachinesPublishers(AzureLocation location)
         {
             string locationString = base.GetStringFromAzureLocation(location);

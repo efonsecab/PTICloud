@@ -8,6 +8,7 @@ export class AzureVirtualMachineService {
     private _getVMImagesListUrl = "api/azurevms/vmsList";
     private _getVMImagePublishersUrl = "api/azurevmImages/publishers";
     private _getPublisherOffersUrl = 'api/azurevmImages/offers';
+    private _getPublisherOfferSkusUrl = 'api/azurevmImages/skus';
 
     constructor(private _http: Http) { }
 
@@ -20,6 +21,13 @@ export class AzureVirtualMachineService {
 
     getVirtualMachineImages(subscriptionId: string): Observable<IAzureVirtualMachineImage[]> {
         return this._http.get(this._getVMImagesListUrl + "?subscriptionId=" + subscriptionId)
+            .map((response: Response) => <IAzureVirtualMachineImage[]>response.json())
+            .do(data => console.log("All: " + JSON.stringify(data)))
+            .catch(this.handleError);
+    }
+
+    getSkus(offerName: string, publisherName: string, subscriptionId: string): Observable<IAzureVirtualMachineImage[]> {
+        return this._http.get(this._getPublisherOfferSkusUrl + "?publisherName=" + publisherName + "&subscriptionId=" + subscriptionId + "&offerName=" + offerName)
             .map((response: Response) => <IAzureVirtualMachineImage[]>response.json())
             .do(data => console.log("All: " + JSON.stringify(data)))
             .catch(this.handleError);

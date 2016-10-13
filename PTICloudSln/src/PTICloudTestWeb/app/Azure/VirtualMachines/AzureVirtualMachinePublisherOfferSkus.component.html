@@ -23,7 +23,11 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let singleSku of Skus">
-                        <td>{{singleSku.name}}</td>
+                        <td>
+                            <a [routerLink]="['/Azure/VirtualMachines/ImageList']" [queryParams]="{subscriptionId: [SelectedSubscriptionId], publisherName: [SelectedPublisherName], offerName: [SelectedPublisherOfferName], skuName: [singleSku.name]}">
+                                {{singleSku.name}}
+                            </a>
+                        </td>
                     </tr>
                 </tbody>
             </table>

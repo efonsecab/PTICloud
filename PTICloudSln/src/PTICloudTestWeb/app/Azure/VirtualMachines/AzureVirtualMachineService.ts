@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 
 @Injectable()
 export class AzureVirtualMachineService {
-    private _getVMImagesListUrl = "api/azurevms/vmsList";
+    private _getVMImagesListUrl = "api/azurevmImages/images";
     private _getVMImagePublishersUrl = "api/azurevmImages/publishers";
     private _getPublisherOffersUrl = 'api/azurevmImages/offers';
     private _getPublisherOfferSkusUrl = 'api/azurevmImages/skus';
@@ -19,8 +19,9 @@ export class AzureVirtualMachineService {
             .catch(this.handleError);
     }
 
-    getVirtualMachineImages(subscriptionId: string): Observable<IAzureVirtualMachineImage[]> {
-        return this._http.get(this._getVMImagesListUrl + "?subscriptionId=" + subscriptionId)
+    getVMImages(subscriptionId: string, publisherName: string, offerName: string, skus:string): Observable<IAzureVirtualMachineImage[]>
+    {
+        return this._http.get(this._getVMImagesListUrl + "?subscriptionId=" + subscriptionId + "&publisherName=" + publisherName + "&offerName=" + offerName + "&skus=" + skus)
             .map((response: Response) => <IAzureVirtualMachineImage[]>response.json())
             .do(data => console.log("All: " + JSON.stringify(data)))
             .catch(this.handleError);

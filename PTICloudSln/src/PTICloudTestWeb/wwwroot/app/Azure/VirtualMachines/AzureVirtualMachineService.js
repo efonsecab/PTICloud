@@ -14,7 +14,7 @@ var rxjs_1 = require('rxjs');
 var AzureVirtualMachineService = (function () {
     function AzureVirtualMachineService(_http) {
         this._http = _http;
-        this._getVMImagesListUrl = "api/azurevms/vmsList";
+        this._getVMImagesListUrl = "api/azurevmImages/images";
         this._getVMImagePublishersUrl = "api/azurevmImages/publishers";
         this._getPublisherOffersUrl = 'api/azurevmImages/offers';
         this._getPublisherOfferSkusUrl = 'api/azurevmImages/skus';
@@ -25,8 +25,8 @@ var AzureVirtualMachineService = (function () {
             .do(function (data) { return console.log("All: " + JSON.stringify(data)); })
             .catch(this.handleError);
     };
-    AzureVirtualMachineService.prototype.getVirtualMachineImages = function (subscriptionId) {
-        return this._http.get(this._getVMImagesListUrl + "?subscriptionId=" + subscriptionId)
+    AzureVirtualMachineService.prototype.getVMImages = function (subscriptionId, publisherName, offerName, skus) {
+        return this._http.get(this._getVMImagesListUrl + "?subscriptionId=" + subscriptionId + "&publisherName=" + publisherName + "&offerName=" + offerName + "&skus=" + skus)
             .map(function (response) { return response.json(); })
             .do(function (data) { return console.log("All: " + JSON.stringify(data)); })
             .catch(this.handleError);

@@ -1,6 +1,6 @@
 <div class="panel panel-primary">
     <div class="panel-heading">
-        Skus
+        Virtual Machine Images
     </div>
     <div class="panel-body">
         <div class="row">
@@ -15,18 +15,16 @@
             </div>
         </div>
         <div class="table-responsive">
-            <table class="table" *ngIf="Skus && Skus.length">
+            <table class="table" *ngIf="VMImages && VMImages.length">
                 <thead>
                     <tr>
                         <th>Name</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let singleSku of Skus">
+                    <tr *ngFor="let singleVMImage of VMImages">
                         <td>
-                            <a [routerLink]="['/Azure/VirtualMachines/ImageList']" [queryParams]="{subscriptionId: [SelectedSubscriptionId], publisherName: [SelectedPublisherName], offerName: [SelectedPublisherOfferName], skuName: [singleSku.name]}">
-                                {{singleSku.name}}
-                            </a>
+                            {{singleVMImage.name}}
                         </td>
                     </tr>
                 </tbody>

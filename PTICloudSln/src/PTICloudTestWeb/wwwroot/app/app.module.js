@@ -15,11 +15,12 @@ var forms_1 = require('@angular/forms');
 var http_1 = require('@angular/http');
 var router_1 = require('@angular/router');
 var app_component_1 = require('./app.component');
-var azurevirtualmachineimagelist_component_1 = require('./azure/virtualmachines/azurevirtualmachineimagelist.component');
+var azurevirtualmachinepublisherlist_component_1 = require('./azure/virtualmachines/azurevirtualmachinepublisherlist.component');
 var azuresubscriptionlist_component_1 = require('./azure/subscriptions/azuresubscriptionlist.component');
 var azuresubscriptioninfo_component_1 = require('./azure/subscriptions/azuresubscriptioninfo.component');
 var azurevirtualmachinepublisheroffers_component_1 = require('./azure/virtualmachines/azurevirtualmachinepublisheroffers.component');
 var AzureVirtualMachinePublisherOfferSkus_component_1 = require('./azure/virtualmachines/AzureVirtualMachinePublisherOfferSkus.component');
+var azurevirtualmachineimageslist_component_1 = require('./azure/virtualmachines/azurevirtualmachineimageslist.component');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -31,20 +32,22 @@ var AppModule = (function () {
                 http_1.HttpModule,
                 router_1.RouterModule.forRoot([
                     { path: '', component: azuresubscriptionlist_component_1.AzureSubscriptionListComponent },
-                    { path: 'Azure/VirtualMachines', component: azurevirtualmachineimagelist_component_1.AzureVirtualMachineImageListComponent },
+                    { path: 'Azure/VirtualMachines/Publishers', component: azurevirtualmachinepublisherlist_component_1.AzureVirtualMachinePublisherListComponent },
                     { path: 'Azure/SubscriptionsList', component: azuresubscriptionlist_component_1.AzureSubscriptionListComponent },
                     { path: 'Azure/SubscriptionInfo', component: azuresubscriptioninfo_component_1.AzureSubscriptionInfoComponent },
                     { path: 'Azure/VirtualMachines/Offers', component: azurevirtualmachinepublisheroffers_component_1.AzureVirtualMachinePublisherOffersComponent },
-                    { path: 'Azure/VirtualMachines/Skus', component: AzureVirtualMachinePublisherOfferSkus_component_1.AzureVirtualMachinePublisherOfferSkusComponent }
+                    { path: 'Azure/VirtualMachines/Skus', component: AzureVirtualMachinePublisherOfferSkus_component_1.AzureVirtualMachinePublisherOfferSkusComponent },
+                    { path: 'Azure/VirtualMachines/ImageList', component: azurevirtualmachineimageslist_component_1.AzureVirtualMachineImagesListComponent }
                 ])
             ],
             declarations: [
                 app_component_1.AppComponent,
-                azurevirtualmachineimagelist_component_1.AzureVirtualMachineImageListComponent,
+                azurevirtualmachinepublisherlist_component_1.AzureVirtualMachinePublisherListComponent,
                 azuresubscriptionlist_component_1.AzureSubscriptionListComponent,
                 azuresubscriptioninfo_component_1.AzureSubscriptionInfoComponent,
                 azurevirtualmachinepublisheroffers_component_1.AzureVirtualMachinePublisherOffersComponent,
-                AzureVirtualMachinePublisherOfferSkus_component_1.AzureVirtualMachinePublisherOfferSkusComponent
+                AzureVirtualMachinePublisherOfferSkus_component_1.AzureVirtualMachinePublisherOfferSkusComponent,
+                azurevirtualmachineimageslist_component_1.AzureVirtualMachineImagesListComponent
             ],
             bootstrap: [app_component_1.AppComponent]
         }), 

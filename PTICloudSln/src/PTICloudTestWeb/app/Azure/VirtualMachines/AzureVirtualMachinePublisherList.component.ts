@@ -6,19 +6,14 @@ import { HttpModule } from '@angular/http';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
-    selector: 'azurevm-list',
-    templateUrl: './app/Azure/VirtualMachines/AzureVirtualMachineImageList.component.html',
+    selector: 'azurevmpublihser-list',
+    templateUrl: './app/Azure/VirtualMachines/AzureVirtualMachinePublisherList.component.html',
     providers: [AzureVirtualMachineService, HttpModule]
 })
-export class AzureVirtualMachineImageListComponent implements OnInit {
+export class AzureVirtualMachinePublisherListComponent implements OnInit {
     SelectedSubscriptionId: string;
-    VMImagesList: IAzureVirtualMachineImage[];
     listFilter: string;
     Publishers: IAzureVirtualMachineImage[];
-
-    //constructor(private _azureVMsService: AzureVirtualMachineService, subscriptionId: string, token: string) {
-    //    this.Publishers = _azureVMsService.getPublishers(subscriptionId, token);
-    //}
 
     constructor(private _azureVMsService: AzureVirtualMachineService, private router: Router, private route: ActivatedRoute) {
     }

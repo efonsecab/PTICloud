@@ -24,11 +24,11 @@ var AzureVirtualMachinePublisherOfferSkusComponent = (function () {
         //check http://stackoverflow.com/questions/34599174/how-to-handle-query-parameters-in-angular-2
         this.route.queryParams.subscribe(function (params) { return _this.SelectedSubscriptionId = params["subscriptionId"]; });
         this.route.queryParams.subscribe(function (params) { return _this.SelectedPublisherName = params["publisherName"]; });
-        this.route.queryParams.subscribe(function (params) { return _this.SelectedPublisherOffer = params["offerName"]; });
+        this.route.queryParams.subscribe(function (params) { return _this.SelectedPublisherOfferName = params["offerName"]; });
         console.log("AzureVirtualMachinePublisherOfferSkusComponent.SelectedSubscriptionId=" + this.SelectedSubscriptionId);
         console.log("AzureVirtualMachinePublisherOfferSkusComponent.SelectedPublisherName=" + this.SelectedPublisherName);
-        console.log("AzureVirtualMachinePublisherOfferSkusComponent.SelectedPublisherOffer=" + this.SelectedPublisherOffer);
-        this._azureVMsService.getSkus(this.SelectedPublisherOffer, this.SelectedPublisherName, this.SelectedSubscriptionId).subscribe(function (skus) { return _this.Skus = skus; }, function (error) { return console.log("Error getting Offers: " + error); });
+        console.log("AzureVirtualMachinePublisherOfferSkusComponent.SelectedPublisherOffer=" + this.SelectedPublisherOfferName);
+        this._azureVMsService.getSkus(this.SelectedPublisherOfferName, this.SelectedPublisherName, this.SelectedSubscriptionId).subscribe(function (skus) { return _this.Skus = skus; }, function (error) { return console.log("Error getting Offers: " + error); });
     };
     AzureVirtualMachinePublisherOfferSkusComponent = __decorate([
         core_1.Component({

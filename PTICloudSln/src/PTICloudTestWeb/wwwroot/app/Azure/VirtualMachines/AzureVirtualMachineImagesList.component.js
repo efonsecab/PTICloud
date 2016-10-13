@@ -12,33 +12,32 @@ var core_1 = require('@angular/core');
 var AzureVirtualMachineService_1 = require('./AzureVirtualMachineService');
 var http_1 = require('@angular/http');
 var router_1 = require('@angular/router');
-var AzureVirtualMachinePublisherOfferSkusComponent = (function () {
-    function AzureVirtualMachinePublisherOfferSkusComponent(_azureVMsService, router, route) {
+var AzureVirtualMachineImagesListComponent = (function () {
+    function AzureVirtualMachineImagesListComponent(_azureVMsService, router, route) {
         this._azureVMsService = _azureVMsService;
         this.router = router;
         this.route = route;
     }
-    AzureVirtualMachinePublisherOfferSkusComponent.prototype.ngOnInit = function () {
+    AzureVirtualMachineImagesListComponent.prototype.ngOnInit = function () {
         var _this = this;
-        console.log("AzureVirtualMachinePublisherOfferSkusComponent init");
+        console.log("AzureVirtualMachineImagesList init");
         //check http://stackoverflow.com/questions/34599174/how-to-handle-query-parameters-in-angular-2
         this.route.queryParams.subscribe(function (params) { return _this.SelectedSubscriptionId = params["subscriptionId"]; });
         this.route.queryParams.subscribe(function (params) { return _this.SelectedPublisherName = params["publisherName"]; });
-        this.route.queryParams.subscribe(function (params) { return _this.SelectedPublisherOfferName = params["offerName"]; });
-        console.log("AzureVirtualMachinePublisherOfferSkusComponent.SelectedSubscriptionId=" + this.SelectedSubscriptionId);
-        console.log("AzureVirtualMachinePublisherOfferSkusComponent.SelectedPublisherName=" + this.SelectedPublisherName);
-        console.log("AzureVirtualMachinePublisherOfferSkusComponent.SelectedPublisherOffer=" + this.SelectedPublisherOfferName);
-        this._azureVMsService.getSkus(this.SelectedPublisherOfferName, this.SelectedPublisherName, this.SelectedSubscriptionId).subscribe(function (skus) { return _this.Skus = skus; }, function (error) { return console.log("Error getting Offers: " + error); });
+        this.route.queryParams.subscribe(function (params) { return _this.SelectedOfferName = params["offerName"]; });
+        this.route.queryParams.subscribe(function (params) { return _this.SelectedSkuName = params["skuName"]; });
+        console.log("AzureVirtualMachineImagesList.SelectedSubscriptionId=" + this.SelectedSubscriptionId);
+        this._azureVMsService.getVMImages(this.SelectedSubscriptionId, this.SelectedPublisherName, this.SelectedOfferName, this.SelectedSkuName).subscribe(function (images) { return _this.VMImages = images; }, function (error) { return console.log("Error getting Publishers: " + error); });
     };
-    AzureVirtualMachinePublisherOfferSkusComponent = __decorate([
+    AzureVirtualMachineImagesListComponent = __decorate([
         core_1.Component({
-            selector: 'azurevm-publisher-offers-skus',
-            templateUrl: './app/Azure/VirtualMachines/AzureVirtualMachinePublisherOfferSkus.component.html',
+            selector: 'azurevmimage-list',
+            templateUrl: './app/Azure/VirtualMachines/AzureVirtualMachineImagesList.component.html',
             providers: [AzureVirtualMachineService_1.AzureVirtualMachineService, http_1.HttpModule]
         }), 
         __metadata('design:paramtypes', [AzureVirtualMachineService_1.AzureVirtualMachineService, router_1.Router, router_1.ActivatedRoute])
-    ], AzureVirtualMachinePublisherOfferSkusComponent);
-    return AzureVirtualMachinePublisherOfferSkusComponent;
+    ], AzureVirtualMachineImagesListComponent);
+    return AzureVirtualMachineImagesListComponent;
 }());
-exports.AzureVirtualMachinePublisherOfferSkusComponent = AzureVirtualMachinePublisherOfferSkusComponent;
-//# sourceMappingURL=AzureVirtualMachinePublisherOfferSkus.component.js.map
+exports.AzureVirtualMachineImagesListComponent = AzureVirtualMachineImagesListComponent;
+//# sourceMappingURL=AzureVirtualMachineImagesList.component.js.map

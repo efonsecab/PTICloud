@@ -11,7 +11,7 @@ namespace PTICloudTestWeb.Controllers.APIControllers
     public class AzureVMsController : BaseApiController
     {
         [HttpGet]
-        [Route("api/azurevms/vmimages")]
+        [Route("api/azurevmImages/allimages")]
         public async Task<IActionResult> GetAllVMImages(string subscriptionId, string token)
         {
             PTICloud.Packages.Cloud.Azure.AzureCloudAthenticationInfo authInfo =
@@ -25,6 +25,22 @@ namespace PTICloudTestWeb.Controllers.APIControllers
             PTICloud.Packages.Cloud.Azure.AzureVirtualMachinesManager vmManager = new PTICloud.Packages.Cloud.Azure.AzureVirtualMachinesManager(authInfo);
             var allvmImages = await vmManager.GetAllVirtualMachinesImages(PTICloud.Packages.Cloud.Azure.AzureBaseManager.AzureLocation.SouthCentralUS);
             return Ok(allvmImages);
+        }
+
+        [HttpGet]
+        [Route("api/azurevmImages/images")]
+        public async Task<IActionResult> GetVMImages(string subscriptionId, string publisherName, string offerName, string skus, string managementToken)
+        {
+            this.VerifyOrGetManagementToken(ref managementToken);
+            PTICloud.Packages.Cloud.Azure.AzureCloudAthenticationInfo authInfo = new PTICloud.Packages.Cloud.Azure.AzureCloudAthenticationInfo()
+            {
+                AuthenticationMode = PTICloud.Packages.Cloud.Azure.CloudAuthenticationMode.AccessToken,
+                SubscriptionId = subscriptionId,
+                AzureAccessToken = managementToken
+            };
+            PTICloud.Packages.Cloud.Azure.AzureVirtualMachinesManager avm = new PTICloud.Packages.Cloud.Azure.AzureVirtualMachinesManager(authInfo);
+            var result = await avm.GetVirtualMachineImages(PTICloud.Packages.Cloud.Azure.AzureBaseManager.AzureLocation.SouthCentralUS, publisherName, offerName, skus);
+            return Ok(result);
         }
 
         private void VerifyOrGetManagementToken(ref string currentToken)
@@ -49,6 +65,7 @@ namespace PTICloudTestWeb.Controllers.APIControllers
             var result = await avm.GetVirtualMachinesOffersForPublisher(PTICloud.Packages.Cloud.Azure.AzureBaseManager.AzureLocation.SouthCentralUS, publisherName);
             return Ok(result);
         }
+
 
         [HttpGet]
         [Route("api/azurevmImages/skus")]

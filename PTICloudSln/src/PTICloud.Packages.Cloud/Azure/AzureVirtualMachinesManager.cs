@@ -19,12 +19,12 @@ namespace PTICloud.Packages.Cloud.Azure
             this._computeManagementClient.SubscriptionId = base.AuthInfo.SubscriptionId;
         }
 
-        public async Task GetVirtualMachinesImages(AzureLocation location, string publisherName, string offer, string skus)
+        public async Task<IList<VirtualMachineImageResource>> GetVirtualMachineImages(AzureLocation location, 
+            string publisherName, string offerName, string skus)
         {
             string locationString = base.GetStringFromAzureLocation(location);
-            await _computeManagementClient.VirtualMachineImages.ListAsync(location: locationString, publisherName: publisherName, offer: offer,
-                skus: skus);
-            await Task.Yield();
+            var result = await this._computeManagementClient.VirtualMachineImages.ListAsync(locationString, publisherName, offerName, skus);
+            return result;
         }
 
         public async Task<IList<VirtualMachineImageResource>> GetVirtualMachineSkus(AzureLocation location,string publisherName, string offerName)

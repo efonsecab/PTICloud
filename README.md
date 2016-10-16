@@ -17,6 +17,8 @@ At the moment of the creation of this document most if not all of the Azure SDKs
 [you can check Microsoft Azure SDK for .NET here](https://github.com/Azure/azure-sdk-for-net)
 
 ## Configuring the application
+[Configuring PTICloud on a new Development Environment ](https://youtu.be/FzMos6sajG0)
+
 Download the latest version of the app from the development branch.
 
 The application requires you to have Azure AD and an application created on that Azure AD.
@@ -61,6 +63,7 @@ To know how to use and configure user screts check
 The application Startup.cs file is configured to look for User Secrets when in Development mode. Check the Startup class constructor at Startup.cs.
 
 Once you have configure your Azure AD app and user secrets, you are ready to start with development.
+
 
 ## Knowledge Base
 This is the list of common errors found in the application and how to solve them

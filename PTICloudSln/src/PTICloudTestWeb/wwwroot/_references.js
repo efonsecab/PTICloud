@@ -37,7 +37,6 @@
 /// <reference path="app/Azure/VirtualMachines/IAzureVirtualMachineImage.js" />
 /// <reference path="app/azure/virtualmachines/iazurevirtualmachineimageresource.js" />
 /// <reference path="app/main.js" />
-/// <reference path="app/microsoftgraph/iuser.js" />
 /// <reference path="app/microsoftgraph/microsoftgraphservice.js" />
 /// <reference path="app/microsoftgraph/userlist.component.js" />
 /// <reference path="js/site.js" />

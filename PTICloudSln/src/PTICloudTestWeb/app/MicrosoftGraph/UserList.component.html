@@ -14,19 +14,30 @@
                 <h3>Filtered by: {{listFilter}}</h3>
             </div>
         </div>
+        
         <div class="table-responsive">
-            <table class="table" *ngIf="UserList && UserList.value">
+            <table class="table" *ngIf="UserList">
                 <thead>
                     <tr>
                         <th>Name</th>
+                        <th>Surname</th>
+                        <th>Display Name</th>
+                        <th>User Principal Name</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let singleUser of UserList.value">
+                    <tr *ngFor="let singleUser of UserList">
                         <td>
-                            Name: {{singleUser.UserPrincipalName}} <br />
-                            Properties: {{singleUser.MailNickname}} <br />
-                            Properties: {{singleUser.Mail}}
+                            {{singleUser.givenName}}
+                        </td>
+                        <td>
+                            {{singleUser.surname}}
+                        </td>
+                        <td>
+                            {{singleUser.displayName}}
+                        </td>
+                        <td>
+                            {{singleUser.userPrincipalName}}
                         </td>
                     </tr>
                 </tbody>

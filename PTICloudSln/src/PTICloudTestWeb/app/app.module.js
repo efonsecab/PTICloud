@@ -8,6 +8,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+/// <reference path="microsoftgraph/microsoftgraphservice.ts" />
 require('rxjs');
 var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
@@ -22,6 +23,7 @@ var azurevirtualmachinepublisheroffers_component_1 = require('./azure/virtualmac
 var AzureVirtualMachinePublisherOfferSkus_component_1 = require('./azure/virtualmachines/AzureVirtualMachinePublisherOfferSkus.component');
 var azurevirtualmachineimageslist_component_1 = require('./azure/virtualmachines/azurevirtualmachineimageslist.component');
 var azurevirtualmachinelist_component_1 = require('./azure/virtualmachines/azurevirtualmachinelist.component');
+var UserList_component_1 = require('./microsoftgraph/UserList.component');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -39,7 +41,8 @@ var AppModule = (function () {
                     { path: 'Azure/VirtualMachines/Offers', component: azurevirtualmachinepublisheroffers_component_1.AzureVirtualMachinePublisherOffersComponent },
                     { path: 'Azure/VirtualMachines/Skus', component: AzureVirtualMachinePublisherOfferSkus_component_1.AzureVirtualMachinePublisherOfferSkusComponent },
                     { path: 'Azure/VirtualMachines/ImageList', component: azurevirtualmachineimageslist_component_1.AzureVirtualMachineImagesListComponent },
-                    { path: 'Azure/VirtualMachines/List', component: azurevirtualmachinelist_component_1.AzureVirtualMachineListComponent }
+                    { path: 'Azure/VirtualMachines/List', component: azurevirtualmachinelist_component_1.AzureVirtualMachineListComponent },
+                    { path: 'MicrosoftGraph/UserList', component: UserList_component_1.UserListComponent }
                 ])
             ],
             declarations: [
@@ -50,7 +53,8 @@ var AppModule = (function () {
                 azurevirtualmachinepublisheroffers_component_1.AzureVirtualMachinePublisherOffersComponent,
                 AzureVirtualMachinePublisherOfferSkus_component_1.AzureVirtualMachinePublisherOfferSkusComponent,
                 azurevirtualmachineimageslist_component_1.AzureVirtualMachineImagesListComponent,
-                azurevirtualmachinelist_component_1.AzureVirtualMachineListComponent
+                azurevirtualmachinelist_component_1.AzureVirtualMachineListComponent,
+                UserList_component_1.UserListComponent
             ],
             bootstrap: [app_component_1.AppComponent]
         }), 

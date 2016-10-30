@@ -23,5 +23,11 @@ namespace PTICloudTestWeb.Controllers.APIControllers
             if (string.IsNullOrWhiteSpace(currentToken))
                 currentToken = PTICloudTestWeb.Helpers.SessionHelper.AzureManagementAccessToken;
         }
+
+        protected void VerifyOrGetMicrosoftGraphToken(ref string token)
+        {
+            if (string.IsNullOrWhiteSpace(token))
+                token = PTICloudTestWeb.Helpers.SessionHelper.MicrosoftGraphAccessToken;
+        }
     }
 }

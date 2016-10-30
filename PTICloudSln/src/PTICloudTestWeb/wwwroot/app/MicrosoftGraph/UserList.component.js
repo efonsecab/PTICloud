@@ -26,7 +26,7 @@ var UserListComponent = (function () {
     UserListComponent = __decorate([
         core_1.Component({
             selector: 'msgraph-userlist',
-            templateUrl: '.app/microsoftgraph/userlist.component.html',
+            templateUrl: './app/microsoftgraph/userlist.component.html',
             providers: [MicrosoftGraphService_1.MicrosoftGraphService, http_1.HttpModule]
         }), 
         __metadata('design:paramtypes', [MicrosoftGraphService_1.MicrosoftGraphService, router_1.Router, router_1.ActivatedRoute])

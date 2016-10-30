@@ -28,13 +28,21 @@ namespace PTICloudTestWeb.Controllers.APIControllers
                 return graphserviceClient;
         }
 
-        [Route("microsoftgraph/users/list")]
-        public async Task<IGraphServiceUsersCollectionPage> GetUsersList(string token)
+        [Route("api/microsoftgraph/users/list")]
+        [HttpGet]
+        public async Task<IActionResult> GetUsersList(string token)
         {
-            base.VerifyOrGetManagementToken(ref token);
-            var graphClient = this.GetGraphClient(token);
-            var users = await graphClient.Users.Request().GetAsync();
-            return users;
+            try
+            {
+                base.VerifyOrGetMicrosoftGraphToken(ref token);
+                var graphClient = this.GetGraphClient(token);
+                var users = await graphClient.Users.Request().GetAsync();
+                return Ok(users);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

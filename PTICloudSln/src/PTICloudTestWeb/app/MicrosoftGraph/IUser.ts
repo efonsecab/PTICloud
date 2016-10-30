@@ -1,22 +1,23 @@
 ﻿export interface IUser
 {
-    AccountEnabled: boolean;
-    Birthday: Date;
-    CompanyName: string;
-    Country: string;
-    Department: string;
-    DisplayName: string;
-    GivenName: string;
-    HireDate: Date;
-    JobTitle: string;
-    Mail: string;
-    MailNickname: string;
-    MobilePhone: string;
-    MySite: string;
-    OfficeLocation: string;
-    PasswordPolicies: string;
-    UserPrincipalName: string;
-    UserType: string;
+    accountEnabled: boolean;
+    birthday: Date;
+    companyName: string;
+    country: string;
+    department: string;
+    displayName: string;
+    givenName: string;
+    hireDate: Date;
+    jobTitle: string;
+    mail: string;
+    mailNickname: string;
+    mobilePhone: string;
+    mySite: string;
+    officeLocation: string;
+    passwordPolicies: string;
+    surname: string;
+    userPrincipalName: string;
+    userType: string;
 }
 
 export interface IGraphServiceUsersCollectionRequest

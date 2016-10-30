@@ -1,4 +1,5 @@
-﻿import 'rxjs';
+﻿/// <reference path="microsoftgraph/microsoftgraphservice.ts" />
+import 'rxjs';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
@@ -13,6 +14,8 @@ import { AzureVirtualMachinePublisherOffersComponent } from './azure/virtualmach
 import { AzureVirtualMachinePublisherOfferSkusComponent } from './azure/virtualmachines/AzureVirtualMachinePublisherOfferSkus.component';
 import { AzureVirtualMachineImagesListComponent } from './azure/virtualmachines/azurevirtualmachineimageslist.component';
 import { AzureVirtualMachineListComponent } from './azure/virtualmachines/azurevirtualmachinelist.component';
+import { MicrosoftGraphService } from './microsoftgraph/MicrosoftGraphService';
+import { UserListComponent } from './microsoftgraph/UserList.component';
 
 @NgModule({
     imports: [
@@ -28,7 +31,8 @@ import { AzureVirtualMachineListComponent } from './azure/virtualmachines/azurev
                 { path: 'Azure/VirtualMachines/Offers', component: AzureVirtualMachinePublisherOffersComponent },
                 { path: 'Azure/VirtualMachines/Skus', component: AzureVirtualMachinePublisherOfferSkusComponent },
                 { path: 'Azure/VirtualMachines/ImageList', component: AzureVirtualMachineImagesListComponent },
-                { path: 'Azure/VirtualMachines/List', component: AzureVirtualMachineListComponent}
+                { path: 'Azure/VirtualMachines/List', component: AzureVirtualMachineListComponent },
+                { path: 'MicrosoftGraph/UserList', component: UserListComponent}
             ])
 
     ],
@@ -41,7 +45,8 @@ import { AzureVirtualMachineListComponent } from './azure/virtualmachines/azurev
         AzureVirtualMachinePublisherOffersComponent,
         AzureVirtualMachinePublisherOfferSkusComponent,
         AzureVirtualMachineImagesListComponent,
-        AzureVirtualMachineListComponent
+        AzureVirtualMachineListComponent,
+        UserListComponent
     ],
     bootstrap: [AppComponent]
 })

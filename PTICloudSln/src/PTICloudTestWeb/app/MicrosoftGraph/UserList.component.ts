@@ -7,7 +7,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'msgraph-userlist',
-    templateUrl : '.app/microsoftgraph/userlist.component.html',
+    templateUrl : './app/microsoftgraph/userlist.component.html',
     providers: [MicrosoftGraphService, HttpModule]
 })
 export class UserListComponent implements OnInit
@@ -16,7 +16,6 @@ export class UserListComponent implements OnInit
     UserList: IGraphServiceUsersCollectionPage;
     constructor(private _msGraphService: MicrosoftGraphService, private router: Router, private route: ActivatedRoute)
     {
-
     }
     ngOnInit(): void {
         console.log("UserListComponent init");

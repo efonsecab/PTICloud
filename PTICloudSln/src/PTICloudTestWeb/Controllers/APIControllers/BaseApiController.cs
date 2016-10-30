@@ -17,5 +17,11 @@ namespace PTICloudTestWeb.Controllers.APIControllers
                 return this.HttpContext.Session;
             }
         }
+
+        protected void VerifyOrGetManagementToken(ref string currentToken)
+        {
+            if (string.IsNullOrWhiteSpace(currentToken))
+                currentToken = PTICloudTestWeb.Helpers.SessionHelper.AzureManagementAccessToken;
+        }
     }
 }

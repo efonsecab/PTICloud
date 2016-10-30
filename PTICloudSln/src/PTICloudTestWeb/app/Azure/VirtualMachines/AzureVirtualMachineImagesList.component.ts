@@ -30,7 +30,8 @@ export class AzureVirtualMachineImagesListComponent implements OnInit
         this.route.queryParams.subscribe(params => this.SelectedOfferName = params["offerName"]);
         this.route.queryParams.subscribe(params => this.SelectedSkuName = params["skuName"]);
         console.log("AzureVirtualMachineImagesList.SelectedSubscriptionId=" + this.SelectedSubscriptionId);
-        this._azureVMsService.getVMImages(this.SelectedSubscriptionId, this.SelectedPublisherName, this.SelectedOfferName, this.SelectedSkuName).subscribe(
+        this._azureVMsService.getVMImages(this.SelectedSubscriptionId, this.SelectedPublisherName,
+            this.SelectedOfferName, this.SelectedSkuName).subscribe(
             images => this.VMImages = images,
             error => console.log("Error getting Publishers: " + error));
     }

@@ -44,12 +44,6 @@ namespace PTICloudTestWeb.Controllers.APIControllers
             return Ok(result);
         }
 
-        private void VerifyOrGetManagementToken(ref string currentToken)
-        {
-            if (string.IsNullOrWhiteSpace(currentToken))
-                currentToken = PTICloudTestWeb.Helpers.SessionHelper.AzureManagementAccessToken;
-        }
-
         [HttpGet]
         [Route("api/azurevmImages/offers")]
         public async Task<IActionResult> GetPublisherOffers(string publisherName, string subscriptionId, string managementToken)

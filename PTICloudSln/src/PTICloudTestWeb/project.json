@@ -22,7 +22,9 @@
     "PTICloud.Packages.Cloud": "1.0.0-*",
     "Microsoft.IdentityModel.Clients.ActiveDirectory": "3.13.5",
     "Microsoft.AspNetCore.Session": "1.0.0-rc2-final",
-    "Microsoft.Extensions.Configuration.UserSecrets": "1.0.0-rc2-final"
+    "Microsoft.Extensions.Configuration.UserSecrets": "1.0.0-rc2-final",
+    "Microsoft.Graph": "1.1.1",
+    "Microsoft.Graph.Core": "1.2.1"
   },
 
   "tools": {

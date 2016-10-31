@@ -1,0 +1,10 @@
+<form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <label>Resource Group Name</label>
+        {{ResourceGroup.name}}
+        <input type="text" class="form-control" placeholder="Name" id="txtName" required [(ngModel)]="ResourceGroup.name" name="txtName" />
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-default">Create</button>
+    </div>
+</form>

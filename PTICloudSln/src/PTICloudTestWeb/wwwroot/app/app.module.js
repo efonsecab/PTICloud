@@ -8,7 +8,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-/// <reference path="microsoftgraph/microsoftgraphservice.ts" />
 require('rxjs');
 var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
@@ -24,6 +23,7 @@ var AzureVirtualMachinePublisherOfferSkus_component_1 = require('./azure/virtual
 var azurevirtualmachineimageslist_component_1 = require('./azure/virtualmachines/azurevirtualmachineimageslist.component');
 var azurevirtualmachinelist_component_1 = require('./azure/virtualmachines/azurevirtualmachinelist.component');
 var UserList_component_1 = require('./microsoftgraph/UserList.component');
+var azureresourcegroupcreate_component_1 = require('./azure/resourcegroups/azureresourcegroupcreate.component');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -42,7 +42,8 @@ var AppModule = (function () {
                     { path: 'Azure/VirtualMachines/Skus', component: AzureVirtualMachinePublisherOfferSkus_component_1.AzureVirtualMachinePublisherOfferSkusComponent },
                     { path: 'Azure/VirtualMachines/ImageList', component: azurevirtualmachineimageslist_component_1.AzureVirtualMachineImagesListComponent },
                     { path: 'Azure/VirtualMachines/List', component: azurevirtualmachinelist_component_1.AzureVirtualMachineListComponent },
-                    { path: 'MicrosoftGraph/UserList', component: UserList_component_1.UserListComponent }
+                    { path: 'MicrosoftGraph/UserList', component: UserList_component_1.UserListComponent },
+                    { path: 'Azure/ResourceGroups/Create', component: azureresourcegroupcreate_component_1.AzureResourceGroupCreateComponent }
                 ])
             ],
             declarations: [
@@ -54,7 +55,8 @@ var AppModule = (function () {
                 AzureVirtualMachinePublisherOfferSkus_component_1.AzureVirtualMachinePublisherOfferSkusComponent,
                 azurevirtualmachineimageslist_component_1.AzureVirtualMachineImagesListComponent,
                 azurevirtualmachinelist_component_1.AzureVirtualMachineListComponent,
-                UserList_component_1.UserListComponent
+                UserList_component_1.UserListComponent,
+                azureresourcegroupcreate_component_1.AzureResourceGroupCreateComponent
             ],
             bootstrap: [app_component_1.AppComponent]
         }), 

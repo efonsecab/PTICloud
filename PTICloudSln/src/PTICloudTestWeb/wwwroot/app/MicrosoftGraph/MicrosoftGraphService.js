@@ -33,4 +33,4 @@ var MicrosoftGraphService = (function () {
     return MicrosoftGraphService;
 }());
 exports.MicrosoftGraphService = MicrosoftGraphService;
-//# sourceMappingURL=microsoftgraphservice.js.map
+//# sourceMappingURL=MicrosoftGraphService.js.map

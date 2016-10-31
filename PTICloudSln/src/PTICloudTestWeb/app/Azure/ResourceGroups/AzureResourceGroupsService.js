@@ -8,29 +8,36 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+/// <reference path="azureresourcegroupcreate.component.ts" />
 var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
 var rxjs_1 = require('rxjs');
-var MicrosoftGraphService = (function () {
-    function MicrosoftGraphService(_http) {
+var AzureResourceGroupService = (function () {
+    function AzureResourceGroupService(_http) {
         this._http = _http;
-        this._getUsersListUrl = "api/microsoftgraph/users/list";
+        this._createResourceGroupUrl = "api/Azure/ResourceGroups/Create";
     }
-    MicrosoftGraphService.prototype.getUsers = function () {
-        return this._http.get(this._getUsersListUrl)
+    AzureResourceGroupService.prototype.createResourceGroup = function (pSubscriptionId, pResourceGroupName) {
+        var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
+        var options = new http_1.RequestOptions({ headers: headers });
+        var body = JSON.stringify({
+            subscriptionId: pSubscriptionId,
+            resourceGroupName: pResourceGroupName
+        });
+        return this._http.post(this._createResourceGroupUrl, body, options)
             .map(function (response) { return response.json(); })
-            .do(function (data) { return console.log("All: " + JSON.stringify(data)); })
+            .do(function (data) { return console.log("Created: " + JSON.stringify(data)); })
             .catch(this.handleError);
     };
-    MicrosoftGraphService.prototype.handleError = function (error) {
+    AzureResourceGroupService.prototype.handleError = function (error) {
         console.error(error);
         return rxjs_1.Observable.throw(error.json().error || 'Server error');
     };
-    MicrosoftGraphService = __decorate([
+    AzureResourceGroupService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [http_1.Http])
-    ], MicrosoftGraphService);
-    return MicrosoftGraphService;
+    ], AzureResourceGroupService);
+    return AzureResourceGroupService;
 }());
-exports.MicrosoftGraphService = MicrosoftGraphService;
-//# sourceMappingURL=MicrosoftGraphService.js.map
+exports.AzureResourceGroupService = AzureResourceGroupService;
+//# sourceMappingURL=AzureResourceGroupsService.js.map

@@ -1,5 +1,4 @@
-﻿/// <reference path="microsoftgraph/microsoftgraphservice.ts" />
-import 'rxjs';
+﻿import 'rxjs';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
@@ -16,6 +15,9 @@ import { AzureVirtualMachineImagesListComponent } from './azure/virtualmachines/
 import { AzureVirtualMachineListComponent } from './azure/virtualmachines/azurevirtualmachinelist.component';
 import { MicrosoftGraphService } from './microsoftgraph/MicrosoftGraphService';
 import { UserListComponent } from './microsoftgraph/UserList.component';
+import { AzureResourceGroupService } from './azure/resourcegroups/azureresourcegroupsservice';
+import { IResourceGroup } from './azure/resourcegroups/IResourceGroup';
+import { AzureResourceGroupCreateComponent } from './azure/resourcegroups/azureresourcegroupcreate.component';
 
 @NgModule({
     imports: [
@@ -32,7 +34,8 @@ import { UserListComponent } from './microsoftgraph/UserList.component';
                 { path: 'Azure/VirtualMachines/Skus', component: AzureVirtualMachinePublisherOfferSkusComponent },
                 { path: 'Azure/VirtualMachines/ImageList', component: AzureVirtualMachineImagesListComponent },
                 { path: 'Azure/VirtualMachines/List', component: AzureVirtualMachineListComponent },
-                { path: 'MicrosoftGraph/UserList', component: UserListComponent}
+                { path: 'MicrosoftGraph/UserList', component: UserListComponent },
+                { path: 'Azure/ResourceGroups/Create', component: AzureResourceGroupCreateComponent}
             ])
 
     ],
@@ -46,7 +49,8 @@ import { UserListComponent } from './microsoftgraph/UserList.component';
         AzureVirtualMachinePublisherOfferSkusComponent,
         AzureVirtualMachineImagesListComponent,
         AzureVirtualMachineListComponent,
-        UserListComponent
+        UserListComponent,
+        AzureResourceGroupCreateComponent
     ],
     bootstrap: [AppComponent]
 })
